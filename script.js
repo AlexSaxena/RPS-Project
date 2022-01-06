@@ -13,34 +13,26 @@ function computerChoice() {
 }
 
 // Function for playing a single round of RPS
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection == computerSelection) {
+function playRound(playerSelection, computerSelection = computerChoice()) {
+  let playerChoice = playerSelection.toLowerCase();
+
+  if (playerChoice == computerSelection) {
     console.log(
-      `It is a tie between! ${playerSelection} and ${computerSelection}`
+      `It is a tie between! ${playerChoice} and ${computerSelection}`
     );
-  } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    console.log(
-      `You won using ${playerSelection} against ${computerSelection}`
-    );
-  } else if (playerSelection == "rock" && computerSelection == "paper") {
-    console.log(
-      `You lost using ${playerSelection} against ${computerSelection}`
-    );
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
-    console.log(
-      `You won using ${playerSelection} against ${computerSelection}`
-    );
-  } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    console.log(
-      `You lost using ${playerSelection} against ${computerSelection}`
-    );
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    console.log(
-      `You won using ${playerSelection} against ${computerSelection}`
-    );
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    console.log(
-      `You lost using ${playerSelection} against ${computerSelection}`
-    );
+  } else if (playerChoice == "rock" && computerSelection == "scissors") {
+    return `You won using ${playerChoice} against ${computerSelection}`;
+  } else if (playerChoice == "rock" && computerSelection == "paper") {
+    return `You lost using ${playerChoice} against ${computerSelection}`;
+  } else if (playerChoice == "paper" && computerSelection == "rock") {
+    return `You won using ${playerChoice} against ${computerSelection}`;
+  } else if (playerChoice == "paper" && computerSelection == "scissors") {
+    return `You lost using ${playerChoice} against ${computerSelection}`;
+  } else if (playerChoice == "scissors" && computerSelection == "rock") {
+    return `You won using ${playerChoice} against ${computerSelection}`;
+  } else if (playerChoice == "scissors" && computerSelection == "rock") {
+    return `You lost using ${playerChoice} against ${computerSelection}`;
+  } else {
+    return "Please Choose Rock, Paper or Scissors";
   }
 }
