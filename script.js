@@ -1,6 +1,7 @@
 console.log("Greetings, General Kenobi");
 let playerScore = 0;
 let computerScore = 0;
+
 // Function for Computer Choice
 function computerChoice() {
   let random = Math.floor(Math.random() * 3) + 1;
@@ -16,7 +17,7 @@ function computerChoice() {
 // Function for playing a single round of RPS
 function playRound(playerSelection, computerSelection = computerChoice()) {
   let playerChoice = playerSelection.toLowerCase();
-  console.log(playerChoice);
+  console.log("-------------------------------------------------");
 
   if (playerChoice == computerSelection) {
     return `It is a tie between! ${playerChoice} and ${computerSelection}`;
@@ -43,18 +44,21 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
   }
 }
 
+// Function for five rounds of RPS
 function game() {
   let player = "";
   for (let i = 0; i < 5; i++) {
-    player = prompt("Choose Rock, Paper Or Scissors!");
+    player = prompt(`Choose Rock, Paper Or Scissors! Round ${i + 1} of 5`);
     console.log(playRound(player, computerChoice()));
     console.log(
       `Current Score is Player: ${playerScore} vs Computer: ${computerScore}`
     );
     if (i == 4 && playerScore > computerScore) {
-      console.log("WOW you Won!!");
+      return alert("WOW you Won!!");
     } else if (i == 4 && playerScore < computerScore) {
-      console.log("Unlucky Computer won, Try again next time!");
+      return alert("Unlucky Computer won, Try again next time!");
+    } else if (i == 4 && playerScore == computerScore) {
+      return alert("It is a Tie! Close one!");
     }
   }
 }
