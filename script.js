@@ -17,9 +17,7 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
   let playerChoice = playerSelection.toLowerCase();
 
   if (playerChoice == computerSelection) {
-    console.log(
-      `It is a tie between! ${playerChoice} and ${computerSelection}`
-    );
+    return `It is a tie between! ${playerChoice} and ${computerSelection}`;
   } else if (playerChoice == "rock" && computerSelection == "scissors") {
     return `You won using ${playerChoice} against ${computerSelection}`;
   } else if (playerChoice == "rock" && computerSelection == "paper") {
@@ -34,5 +32,13 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
     return `You lost using ${playerChoice} against ${computerSelection}`;
   } else {
     return "Please Choose Rock, Paper or Scissors";
+  }
+}
+
+function game() {
+  let player = "";
+  for (let i = 0; i < 5; i++) {
+    player = prompt("Choose Rock, Paper Or Scissors!");
+    console.log(playRound(player, computerChoice()));
   }
 }
