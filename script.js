@@ -16,7 +16,7 @@ function computerChoice() {
 
 // Function for playing a single round of RPS
 function playRound(playerSelection, computerSelection = computerChoice()) {
-  let playerChoice = playerSelection.toLowerCase();
+  let playerChoice = playerSelection.toLowerCase().trim();
   console.log("-------------------------------------------------");
 
   if (playerChoice == computerSelection) {
