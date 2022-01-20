@@ -6,6 +6,8 @@ let rockBtn = document.querySelector("#rock-button");
 let paperBtn = document.querySelector("#paper-button");
 let scissorsBtn = document.querySelector("#scissors-button");
 let resultBox = document.querySelector("#result-box");
+let playerSpan = document.querySelector("#player-counter");
+let computerSpan = document.querySelector("#computer-counter");
 
 rockBtn.addEventListener("click", playRound);
 paperBtn.addEventListener("click", playRound);
@@ -49,4 +51,10 @@ function playRound(player) {
     computerScore++;
     resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
   }
+
+  // Player || Computer score updates
+  playerSpan.innerText = playerScore;
+  computerSpan.innerText = computerScore;
+  console.log(`Player score -> ${playerScore}`);
+  console.log(`Ai score -> ${computerScore}`);
 }
