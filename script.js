@@ -43,22 +43,3 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
     return `Please Enter Rock, Paper Or Scissors`;
   }
 }
-
-// Function for five rounds of RPS
-function game() {
-  let player = "";
-  for (let i = 0; i < 5; i++) {
-    player = prompt(`Choose Rock, Paper Or Scissors! Round ${i + 1} of 5`);
-    console.log(playRound(player, computerChoice()));
-    console.log(
-      `Current Score is Player: ${playerScore} vs Computer: ${computerScore}`
-    );
-    if (i == 4 && playerScore > computerScore) {
-      return alert("WOW you Won!!");
-    } else if (i == 4 && playerScore < computerScore) {
-      return alert("Unlucky Computer won, Try again next time!");
-    } else if (i == 4 && playerScore == computerScore) {
-      return alert("It is a Tie! Close one!");
-    }
-  }
-}
