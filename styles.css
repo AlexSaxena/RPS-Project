@@ -19,14 +19,14 @@ h2 {
   gap: 2rem;
 }
 #result-box {
-  border: solid red 2px;
+  /* border: solid red 2px; */
   text-align: center;
   font-family: "Anton", sans-serif;
   font-size: 40px;
   padding: 25px;
 }
 .player-selection {
-  border: solid yellow 2px;
+  /* border: solid yellow 2px; */
   padding: 2rem;
 }
 #rock-img,
@@ -38,4 +38,32 @@ h2 {
 #paper-img:hover,
 #scissors-img:hover {
   transform: scale(1.2);
+}
+#score-title {
+  font-size: 35px;
+  text-decoration: underline;
+  margin-top: 35px;
+  text-align: center;
+}
+.score-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 10rem;
+}
+#score-player {
+  /* border: solid green 2px; */
+  font-size: 40px;
+}
+#score-computer {
+  /* border: solid blue 2px; */
+  font-size: 40px;
+}
+#player-counter {
+  font-size: 65px;
+  padding-left: 35%;
+}
+#computer-counter {
+  font-size: 65px;
+  padding-left: 40%;
 }
