@@ -29,3 +29,13 @@ h2 {
   border: solid yellow 2px;
   padding: 2rem;
 }
+#rock-img,
+#paper-img,
+#scissors-img {
+  transition: 100ms;
+}
+#rock-img:hover,
+#paper-img:hover,
+#scissors-img:hover {
+  transform: scale(1.2);
+}
