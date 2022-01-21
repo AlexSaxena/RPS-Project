@@ -2,23 +2,30 @@ console.log("Greetings, General Kenobi");
 let playerScore = 0;
 let computerScore = 0;
 
-let rockBtn = document.querySelector("#rock-button");
-let paperBtn = document.querySelector("#paper-button");
-let scissorsBtn = document.querySelector("#scissors-button");
+let rockImage = document.querySelector("#rock-img");
+let paperImage = document.querySelector("#paper-img");
+let scissorsImage = document.querySelector("#scissors-img");
 let resultBox = document.querySelector("#result-box");
 let playerSpan = document.querySelector("#player-counter");
 let computerSpan = document.querySelector("#computer-counter");
 
-rockBtn.addEventListener("click", playRound);
-paperBtn.addEventListener("click", playRound);
-scissorsBtn.addEventListener("click", playRound);
+// Eventlisteners for Player Selection
+rockImage.addEventListener("click", () => {
+  playRound("rock");
+});
+paperImage.addEventListener("click", () => {
+  playRound("paper");
+});
+scissorsImage.addEventListener("click", () => {
+  playRound("scissors");
+});
 
 // Function for Computer Choice
 function computerChoice() {
-  let random = Math.floor(Math.random() * 3) + 1;
-  if (random == 1) {
+  let random = Math.floor(Math.random() * 3);
+  if (random == 0) {
     return "rock";
-  } else if (random == 2) {
+  } else if (random == 1) {
     return "paper";
   } else {
     return "scissors";
@@ -28,7 +35,7 @@ function computerChoice() {
 // Function for playing a single round of RPS
 function playRound(player) {
   let computerSelection = computerChoice();
-  let playerChoice = player.target.innerText.toLowerCase();
+  let playerChoice = player;
 
   if (playerChoice == computerSelection) {
     resultBox.textContent = `It is a tie between! ${playerChoice} and ${computerSelection}`;
@@ -58,3 +65,6 @@ function playRound(player) {
   console.log(`Player score -> ${playerScore}`);
   console.log(`Ai score -> ${computerScore}`);
 }
+
+// Function for restarting the game
+function restart() {}
