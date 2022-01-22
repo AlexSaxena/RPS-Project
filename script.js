@@ -42,28 +42,36 @@ function playRound(player) {
       resultBox.textContent = `It is a tie between! ${playerChoice} and ${computerSelection}`;
     } else if (playerChoice == "rock" && computerSelection == "scissors") {
       playerScore++;
+      updateScore();
       resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
     } else if (playerChoice == "rock" && computerSelection == "paper") {
       computerScore++;
+      updateScore();
       resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
     } else if (playerChoice == "paper" && computerSelection == "rock") {
       playerScore++;
+      updateScore();
       resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
     } else if (playerChoice == "paper" && computerSelection == "scissors") {
       computerScore++;
+      updateScore();
       resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
     } else if (playerChoice == "scissors" && computerSelection == "paper") {
       playerScore++;
+      updateScore();
       resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
     } else if (playerChoice == "scissors" && computerSelection == "rock") {
       computerScore++;
+      updateScore();
       resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
     }
   }
+}
 
-  // Player || Computer score updates
+function updateScore() {
   playerSpan.innerText = playerScore;
   computerSpan.innerText = computerScore;
+  resultBox.innerText = "Pick your hand!";
   console.log(`Player score -> ${playerScore}`);
   console.log(`Ai score -> ${computerScore}`);
 }
@@ -75,11 +83,9 @@ function bestOfFive() {
     } else if (playerScore < computerScore) {
       resultBox.textContent = `Unlucky! You Lost with ${playerScore} to ${computerScore}`;
     }
+    displayRestart();
     return false;
   } else if (playerScore + computerScore < 5) {
     return true;
   }
 }
-
-// Function for restarting the game
-function restart() {}
