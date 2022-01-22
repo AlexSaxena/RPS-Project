@@ -37,26 +37,28 @@ function playRound(player) {
   let computerSelection = computerChoice();
   let playerChoice = player;
 
-  if (playerChoice == computerSelection) {
-    resultBox.textContent = `It is a tie between! ${playerChoice} and ${computerSelection}`;
-  } else if (playerChoice == "rock" && computerSelection == "scissors") {
-    playerScore++;
-    resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-  } else if (playerChoice == "rock" && computerSelection == "paper") {
-    computerScore++;
-    resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
-  } else if (playerChoice == "paper" && computerSelection == "rock") {
-    playerScore++;
-    resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-  } else if (playerChoice == "paper" && computerSelection == "scissors") {
-    computerScore++;
-    resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
-  } else if (playerChoice == "scissors" && computerSelection == "paper") {
-    playerScore++;
-    resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-  } else if (playerChoice == "scissors" && computerSelection == "rock") {
-    computerScore++;
-    resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
+  if (bestOfFive()) {
+    if (playerChoice == computerSelection) {
+      resultBox.textContent = `It is a tie between! ${playerChoice} and ${computerSelection}`;
+    } else if (playerChoice == "rock" && computerSelection == "scissors") {
+      playerScore++;
+      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
+    } else if (playerChoice == "rock" && computerSelection == "paper") {
+      computerScore++;
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
+    } else if (playerChoice == "paper" && computerSelection == "rock") {
+      playerScore++;
+      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
+    } else if (playerChoice == "paper" && computerSelection == "scissors") {
+      computerScore++;
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
+    } else if (playerChoice == "scissors" && computerSelection == "paper") {
+      playerScore++;
+      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
+    } else if (playerChoice == "scissors" && computerSelection == "rock") {
+      computerScore++;
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
+    }
   }
 
   // Player || Computer score updates
@@ -64,6 +66,19 @@ function playRound(player) {
   computerSpan.innerText = computerScore;
   console.log(`Player score -> ${playerScore}`);
   console.log(`Ai score -> ${computerScore}`);
+}
+
+function bestOfFive() {
+  if (playerScore + computerScore == 5) {
+    if (playerScore > computerScore) {
+      resultBox.textContent = `Congratulation! You won with ${playerScore} to ${computerScore}`;
+    } else if (playerScore < computerScore) {
+      resultBox.textContent = `Unlucky! You Lost with ${playerScore} to ${computerScore}`;
+    }
+    return false;
+  } else if (playerScore + computerScore < 5) {
+    return true;
+  }
 }
 
 // Function for restarting the game
