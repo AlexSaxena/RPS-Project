@@ -89,3 +89,15 @@ function bestOfFive() {
     return true;
   }
 }
+
+// Function for restarting the game
+function displayRestart() {
+  let restartBtn = document.querySelector("#restart-button");
+  restartBtn.style.visibility = "visible";
+  restartBtn.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+    restartBtn.style.visibility = "hidden";
+  });
+}
