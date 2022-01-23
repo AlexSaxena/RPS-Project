@@ -45,30 +45,17 @@ function playRound(player) {
     } else if (playerChoice == "rock" && computerChoice == "scissors") {
       wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "rock" && computerChoice == "paper") {
-      computerScore++;
-      updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
+      lostGame(playerChoice, computerChoice);
     } else if (playerChoice == "paper" && computerChoice == "rock") {
       wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "paper" && computerChoice == "scissors") {
-      computerScore++;
-      updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
+      lostGame(playerChoice, computerChoice);
     } else if (playerChoice == "scissors" && computerChoice == "paper") {
       wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "scissors" && computerChoice == "rock") {
-      computerScore++;
-      updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
+      lostGame(playerChoice, computerChoice);
     }
   }
-}
-
-function updateScore() {
-  playerSpan.innerText = playerScore;
-  computerSpan.innerText = computerScore;
-  tieSpan.innerText = tieScore;
-  resultBox.innerText = "Pick your hand!";
 }
 
 function wonGame(player, computer) {
@@ -76,11 +63,21 @@ function wonGame(player, computer) {
   resultBox.textContent = `You won using ${player} against ${computer}`;
   playerSpan.innerText = playerScore;
 }
-
+function lostGame(player, computer) {
+  computerScore++;
+  resultBox.textContent = `You lost using ${player} against ${computer}`;
+  computerSpan.innerText = computerScore;
+}
 function tieGame(player, computer) {
   tieScore++;
   resultBox.textContent = `It is a tie between! ${player} and ${computer} try again!`;
   tieSpan.innerText = tieScore;
+}
+function updateScore() {
+  playerSpan.innerText = playerScore;
+  computerSpan.innerText = computerScore;
+  tieSpan.innerText = tieScore;
+  resultBox.innerText = "Pick your hand!";
 }
 
 function bestOfFive() {
