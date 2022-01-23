@@ -6,10 +6,10 @@ let tieScore = 0;
 let rockImage = document.querySelector("#rock-img");
 let paperImage = document.querySelector("#paper-img");
 let scissorsImage = document.querySelector("#scissors-img");
-let resultBox = document.querySelector("#result-box");
 let playerSpan = document.querySelector("#player-counter");
 let computerSpan = document.querySelector("#computer-counter");
 let tieSpan = document.querySelector("#tie-counter");
+let resultBox = document.querySelector("#result-box");
 
 // Eventlisteners for Player Selection
 rockImage.addEventListener("click", () => {
@@ -22,7 +22,7 @@ scissorsImage.addEventListener("click", () => {
   playRound("scissors");
 });
 
-// Function for Computer Choice
+// Function for random Computer Choice
 function computerSelection() {
   let random = Math.floor(Math.random() * 3);
   if (random == 0) {
@@ -44,14 +44,14 @@ function playRound(player) {
       tieGame(playerChoice, computerChoice);
     } else if (playerChoice == "rock" && computerChoice == "scissors") {
       wonGame(playerChoice, computerChoice);
-    } else if (playerChoice == "rock" && computerChoice == "paper") {
-      lostGame(playerChoice, computerChoice);
     } else if (playerChoice == "paper" && computerChoice == "rock") {
       wonGame(playerChoice, computerChoice);
-    } else if (playerChoice == "paper" && computerChoice == "scissors") {
-      lostGame(playerChoice, computerChoice);
     } else if (playerChoice == "scissors" && computerChoice == "paper") {
       wonGame(playerChoice, computerChoice);
+    } else if (playerChoice == "rock" && computerChoice == "paper") {
+      lostGame(playerChoice, computerChoice);
+    } else if (playerChoice == "paper" && computerChoice == "scissors") {
+      lostGame(playerChoice, computerChoice);
     } else if (playerChoice == "scissors" && computerChoice == "rock") {
       lostGame(playerChoice, computerChoice);
     }
@@ -62,18 +62,21 @@ function wonGame(player, computer) {
   playerScore++;
   resultBox.textContent = `You won using ${player} against ${computer}`;
   playerSpan.innerText = playerScore;
+  bestOfFive();
 }
 function lostGame(player, computer) {
   computerScore++;
   resultBox.textContent = `You lost using ${player} against ${computer}`;
   computerSpan.innerText = computerScore;
+  bestOfFive();
 }
 function tieGame(player, computer) {
   tieScore++;
   resultBox.textContent = `It is a tie between! ${player} and ${computer} try again!`;
   tieSpan.innerText = tieScore;
+  bestOfFive();
 }
-function updateScore() {
+function resetScore() {
   playerSpan.innerText = playerScore;
   computerSpan.innerText = computerScore;
   tieSpan.innerText = tieScore;
@@ -102,7 +105,7 @@ function displayRestart() {
     playerScore = 0;
     computerScore = 0;
     tieScore = 0;
-    updateScore();
+    resetScore();
     restartBtn.style.visibility = "hidden";
   });
 }
