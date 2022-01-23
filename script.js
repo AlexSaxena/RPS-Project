@@ -1,6 +1,7 @@
 console.log("Greetings, General Kenobi");
 let playerScore = 0;
 let computerScore = 0;
+let tieScore = 0;
 
 let rockImage = document.querySelector("#rock-img");
 let paperImage = document.querySelector("#paper-img");
@@ -8,6 +9,7 @@ let scissorsImage = document.querySelector("#scissors-img");
 let resultBox = document.querySelector("#result-box");
 let playerSpan = document.querySelector("#player-counter");
 let computerSpan = document.querySelector("#computer-counter");
+let tieSpan = document.querySelector("#tie-counter");
 
 // Eventlisteners for Player Selection
 rockImage.addEventListener("click", () => {
@@ -21,7 +23,7 @@ scissorsImage.addEventListener("click", () => {
 });
 
 // Function for Computer Choice
-function computerChoice() {
+function computerSelection() {
   let random = Math.floor(Math.random() * 3);
   if (random == 0) {
     return "rock";
@@ -34,36 +36,36 @@ function computerChoice() {
 
 // Function for playing a single round of RPS
 function playRound(player) {
-  let computerSelection = computerChoice();
+  let computerChoice = computerSelection();
   let playerChoice = player;
 
   if (bestOfFive()) {
-    if (playerChoice == computerSelection) {
-      resultBox.textContent = `It is a tie between! ${playerChoice} and ${computerSelection}`;
-    } else if (playerChoice == "rock" && computerSelection == "scissors") {
+    if (playerChoice == computerChoice) {
+      tieGame(playerChoice, computerChoice);
+    } else if (playerChoice == "rock" && computerChoice == "scissors") {
       playerScore++;
       updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-    } else if (playerChoice == "rock" && computerSelection == "paper") {
+      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+    } else if (playerChoice == "rock" && computerChoice == "paper") {
       computerScore++;
       updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
-    } else if (playerChoice == "paper" && computerSelection == "rock") {
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
+    } else if (playerChoice == "paper" && computerChoice == "rock") {
       playerScore++;
       updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-    } else if (playerChoice == "paper" && computerSelection == "scissors") {
+      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+    } else if (playerChoice == "paper" && computerChoice == "scissors") {
       computerScore++;
       updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
-    } else if (playerChoice == "scissors" && computerSelection == "paper") {
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
+    } else if (playerChoice == "scissors" && computerChoice == "paper") {
       playerScore++;
       updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerSelection}`;
-    } else if (playerChoice == "scissors" && computerSelection == "rock") {
+      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+    } else if (playerChoice == "scissors" && computerChoice == "rock") {
       computerScore++;
       updateScore();
-      resultBox.textContent = `You lost using ${playerChoice} against ${computerSelection}`;
+      resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
     }
   }
 }
@@ -71,9 +73,16 @@ function playRound(player) {
 function updateScore() {
   playerSpan.innerText = playerScore;
   computerSpan.innerText = computerScore;
+  tieSpan.innerText = tieScore;
   resultBox.innerText = "Pick your hand!";
   console.log(`Player score -> ${playerScore}`);
   console.log(`Ai score -> ${computerScore}`);
+}
+
+function tieGame(player, computer) {
+  tieScore++;
+  resultBox.textContent = `It is a tie between! ${player} and ${computer} try again!`;
+  tieSpan.innerText = tieScore;
 }
 
 function bestOfFive() {
@@ -97,6 +106,7 @@ function displayRestart() {
   restartBtn.addEventListener("click", () => {
     playerScore = 0;
     computerScore = 0;
+    tieScore = 0;
     updateScore();
     restartBtn.style.visibility = "hidden";
   });
