@@ -43,25 +43,19 @@ function playRound(player) {
     if (playerChoice == computerChoice) {
       tieGame(playerChoice, computerChoice);
     } else if (playerChoice == "rock" && computerChoice == "scissors") {
-      playerScore++;
-      updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+      wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "rock" && computerChoice == "paper") {
       computerScore++;
       updateScore();
       resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
     } else if (playerChoice == "paper" && computerChoice == "rock") {
-      playerScore++;
-      updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+      wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "paper" && computerChoice == "scissors") {
       computerScore++;
       updateScore();
       resultBox.textContent = `You lost using ${playerChoice} against ${computerChoice}`;
     } else if (playerChoice == "scissors" && computerChoice == "paper") {
-      playerScore++;
-      updateScore();
-      resultBox.textContent = `You won using ${playerChoice} against ${computerChoice}`;
+      wonGame(playerChoice, computerChoice);
     } else if (playerChoice == "scissors" && computerChoice == "rock") {
       computerScore++;
       updateScore();
@@ -75,8 +69,12 @@ function updateScore() {
   computerSpan.innerText = computerScore;
   tieSpan.innerText = tieScore;
   resultBox.innerText = "Pick your hand!";
-  console.log(`Player score -> ${playerScore}`);
-  console.log(`Ai score -> ${computerScore}`);
+}
+
+function wonGame(player, computer) {
+  playerScore++;
+  resultBox.textContent = `You won using ${player} against ${computer}`;
+  playerSpan.innerText = playerScore;
 }
 
 function tieGame(player, computer) {
