@@ -49,22 +49,19 @@ h2 {
 .score-container {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 40px;
   gap: 10rem;
 }
-#score-player {
+#score-player,
+#score-computer,
+#score-tie {
   font-size: 40px;
 }
-#score-computer {
-  font-size: 40px;
-}
-#player-counter {
+#player-counter,
+#computer-counter,
+#tie-counter {
   font-size: 65px;
   padding-left: 35%;
-}
-#computer-counter {
-  font-size: 65px;
-  padding-left: 40%;
 }
 .footer {
   position: fixed;
