@@ -58,6 +58,7 @@ function playRound(player) {
   }
 }
 
+// Game outcomes W/L/T
 function wonGame(player, computer) {
   playerScore++;
   resultBox.textContent = `You won using ${player} against ${computer}`;
@@ -76,6 +77,7 @@ function tieGame(player, computer) {
   tieSpan.innerText = tieScore;
   bestOfFive();
 }
+
 function resetScore() {
   playerSpan.innerText = playerScore;
   computerSpan.innerText = computerScore;
@@ -86,7 +88,7 @@ function resetScore() {
 function bestOfFive() {
   if (playerScore + computerScore == 5) {
     if (playerScore > computerScore) {
-      resultBox.textContent = `Congratulation! You won with ${playerScore} to ${computerScore}`;
+      resultBox.textContent = `Congratulations! You won with ${playerScore} to ${computerScore}`;
     } else if (playerScore < computerScore) {
       resultBox.textContent = `Unlucky! You Lost with ${playerScore} to ${computerScore}`;
     }
