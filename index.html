@@ -4,12 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/script.js" defer></script>
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <h1 style="text-align: center">Hello There!</h1>
-    <h2 style="text-align: center">let's play some Rock, Paper, Scissors</h2>
+    <h1>Let's play some Rock, Paper, Scissors!</h1>
+    <h2>Best Of Five!</h2>
     <hr />
-    <script src="/script.js"></script>
+    <div id="result-box">Pick your hand!</div>
+    <div class="player-selection">
+      <img
+        src="/assets/rock.png"
+        alt="Image Rock selection"
+        id="rock-img"
+        class="rps-img"
+      />
+      <img
+        src="/assets/paper.png"
+        alt="Image Paper selection"
+        id="paper-img"
+        class="rps-img"
+      />
+      <img
+        src="/assets/scissors.png"
+        alt="Image Scissors selection"
+        id="scissors-img"
+        class="rps-img"
+      />
+    </div>
+    <div id="score-title">
+      <span>Current Score!</span>
+    </div>
+    <div class="score-container">
+      <div id="score-player">
+        Player Points <br />
+        <span id="player-counter">0</span>
+      </div>
+      <div id="score-tie">
+        Tie <br />
+        <span id="tie-counter">0</span>
+      </div>
+      <div id="score-computer">
+        Computer Points <br />
+        <span id="computer-counter">0</span>
+      </div>
+    </div>
+    <div id="restart">
+      <button id="restart-button">Play Again?</button>
+    </div>
+    <div class="footer">
+      <p>Made by Alex Saxena</p>
+    </div>
   </body>
 </html>
